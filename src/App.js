@@ -1,5 +1,16 @@
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { routes } from './config/routes';
+console.log(routes);
 const App = () => {
-  return 'create-react-app cleaned';
+  return (
+    <Router>
+      <Switch>
+        {routes.map((route, i) => (
+          <Route exact key={i} {...route} />
+        ))}
+      </Switch>
+    </Router>
+  );
 };
 
 export { App };

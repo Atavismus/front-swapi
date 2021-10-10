@@ -1,6 +1,6 @@
 import { RESOURCES } from './constants';
-import { Main } from './pages/Main';
-import { AllByResource } from './pages/AllByResource';
+import { Main } from '../pages/Main';
+import { AllByResource } from '../pages/AllByResource';
 
 const routes = [
   {
@@ -9,11 +9,11 @@ const routes = [
   },
 ];
 
-RESOURCES.map((resource) =>
+for (const resource of RESOURCES) {
   routes.push({
-    path: `all/${resource}`,
+    path: `/all/${resource}`,
     component: AllByResource,
-  })
-);
+  });
+}
 
 export { routes };
