@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   AppBar,
+  Container,
   FormControlLabel,
   Switch,
   Toolbar,
@@ -12,20 +13,22 @@ import styles from './Topbar.module.scss';
 const Topbar = () => {
   return (
     <AppBar position="sticky" className={styles.appBar}>
-      <Toolbar className={styles.toolBar}>
-        <Link to="/">
-          <img
-            src={`${process.env.PUBLIC_URL}/fastswapi.png`}
-            alt="Fastswapi"
-            className={styles.logo}
+      <Toolbar>
+        <Container className="flex alignCenter spaceBetween">
+          <Link to="/">
+            <img
+              src={`${process.env.PUBLIC_URL}/fastswapi.png`}
+              alt="Fastswapi"
+              className={styles.logo}
+            />
+          </Link>
+          <Typography variant="h1">The Star Wars API viewer</Typography>
+          <FormControlLabel
+            control={<Switch color="primary" />}
+            label="Wookie"
+            className={styles.switch}
           />
-        </Link>
-        <Typography variant="h1">The Star Wars API viewer</Typography>
-        <FormControlLabel
-          control={<Switch color="primary" />}
-          label="Wookie"
-          className={styles.switch}
-        />
+        </Container>
       </Toolbar>
     </AppBar>
   );

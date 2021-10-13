@@ -11,7 +11,33 @@ body {
   color: var(--light);
   margin: 0;
 }
+a,
+a:focus,
+a:visited {
+  color: var(--yellow);
+  text-decoration: none;
+}
 
-.fullWidth {
-  width: 100%;
+a:hover {
+  text-decoration: underline;
+}
+
+.center {
+  text-align: center;
+}
+
+.gutter {
+  margin-top: 20px;
+}
+
+:root .flex {
+  display: flex;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.alignCenter {
+  align-items: center;
 }

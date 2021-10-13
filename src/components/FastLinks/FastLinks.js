@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from '../../config/routes';
+import Container from '@mui/material/Container';
 import styles from './FastLinks.module.scss';
 import { ICONS } from '../../config/constants';
 
 const FastLinks = () => {
   return (
-    <div className={styles.fastLinks}>
+    <Container className={`${styles.fastLinks} center gutter`}>
       {routes
         .filter(
           (element) => !element.path.includes(':id') && element.path !== '/'
@@ -17,7 +18,7 @@ const FastLinks = () => {
             {route.path.slice(1).toUpperCase()}
           </Link>
         ))}
-    </div>
+    </Container>
   );
 };
 
