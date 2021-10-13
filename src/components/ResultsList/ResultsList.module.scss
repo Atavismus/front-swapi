@@ -1,0 +1,29 @@
+:root {
+  .container {
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    color: var(--yellow);
+    font-size: x-large;
+    margin-top: 15px;
+  }
+
+  .result {
+    width: auto;
+    height: 40px;
+    border-color: var(--yellow);
+    border-radius: 20px;
+    font-size: small;
+    color: var(--yellow);
+    margin: 5px;
+    &.on,
+    &:hover {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+  }
+}
