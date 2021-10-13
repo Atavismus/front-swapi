@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getData } from '../services/AllByResourceService';
 import { MainLayout } from '../layouts/MainLayout';
 import { ResultsList } from '../components/ResultsList/ResultsList';
+import { Loader } from '../components/Loader/Loader';
 
 const AllByResource = (props) => {
   const { match } = props;
@@ -39,15 +40,8 @@ const AllByResource = (props) => {
           onResultClick={handleResult}
         />
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
-
-      {/* <>
-        {data &&
-          data.map((element, index) => <p key={index}>{element.name}</p>)}
-
-        {nextPage && <p>TODO next page: {nextPage}</p>}
-      </> */}
     </MainLayout>
   );
 };
