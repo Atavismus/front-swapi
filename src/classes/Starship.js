@@ -15,6 +15,7 @@ export class Starship {
     this.consumables = object.consumables;
     this.films = object.films;
     this.pilots = object.pilots;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.name, this.starship_class, this.manufacturer];

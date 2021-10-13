@@ -13,6 +13,7 @@ export class People {
     this.species = object.species;
     this.starships = object.starships;
     this.vehicles = object.vehicles;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.name, this.gender, this.birth_year];

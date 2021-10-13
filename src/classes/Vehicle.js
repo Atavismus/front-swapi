@@ -13,6 +13,7 @@ export class Vehicle {
     this.consumables = object.consumables;
     this.films = object.films;
     this.pilots = object.pilots;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.name, this.vehicle_class, this.manufacturer];

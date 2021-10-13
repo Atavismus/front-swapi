@@ -11,6 +11,7 @@ export class Film {
     this.vehicles = object.vehicles;
     this.characters = object.characters;
     this.planets = object.planets;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.episode_id, this.title, this.release_date];

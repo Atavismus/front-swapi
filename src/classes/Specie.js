@@ -12,6 +12,7 @@ export class Specie {
     this.homeworld = object.homeworld;
     this.people = object.people;
     this.films = object.films;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.name, this.classification, this.designation];

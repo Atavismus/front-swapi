@@ -11,6 +11,7 @@ export class Planet {
     this.surface_water = object.surface_water;
     this.residents = object.residents;
     this.films = object.films;
+    this.url = object.url;
   }
   getTitleFields() {
     return [this.name, this.climate, this.terrain];
