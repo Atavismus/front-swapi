@@ -13,7 +13,7 @@ export class Planet {
     this.films = object.films;
   }
   getTitleFields() {
-    return [this.name, this.terrain, this.surface_water];
+    return [this.name, this.climate, this.terrain];
   }
   getSheetFields() {
     return {
@@ -21,8 +21,8 @@ export class Planet {
       gravity: 'Gravity',
       rotation_period: 'Rotation period',
       orbital_period: 'Orbital period',
+      surface_water: 'Surface water (%)',
       population: 'Population',
-      climate: 'Climate',
       residents: 'Residents',
       films: 'Films',
     };
