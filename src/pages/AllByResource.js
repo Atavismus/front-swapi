@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getData } from '../services/AllByResourceService';
 import { MainLayout } from '../layouts/MainLayout';
 import { ResultsList } from '../components/ResultsList/ResultsList';
+import { Result } from '../components/Result/Result';
 import { Loader } from '../components/Loader/Loader';
+import { classes } from '../classes/classes';
 
 const AllByResource = (props) => {
   const { match } = props;
@@ -10,6 +12,7 @@ const AllByResource = (props) => {
   const [data, setData] = useState(null);
   const [count, setCount] = useState(0);
   const [currentResult, setCurrentResult] = useState(null);
+  const [dataOneSheet, setDataOneSheet] = useState(null);
   // const [nextPage, setNextPage] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +29,10 @@ const AllByResource = (props) => {
   }, [resource]);
 
   const handleResult = (event) => {
-    setCurrentResult(parseInt(event.target.value));
+    const id = parseInt(event.target.value);
+    setCurrentResult(id);
+    const obj = new classes[resource](data[id]);
+    setDataOneSheet(obj);
   };
 
   return (
@@ -41,6 +47,13 @@ const AllByResource = (props) => {
         />
       ) : (
         <Loader />
+      )}
+      {dataOneSheet && (
+        <Result
+          data={dataOneSheet}
+          currentResource={resource}
+          currentResult={currentResult}
+        />
       )}
     </MainLayout>
   );
