@@ -1,12 +1,12 @@
 import { RESOURCES } from './constants';
-import { Main } from '../pages/Main';
+import { Home } from '../pages/Home';
 import { AllByResource } from '../pages/AllByResource';
 import { OneByResource } from '../pages/OneByResource';
 
 const routes = [
   {
     path: '/',
-    component: Main,
+    component: Home,
   },
 ];
 
