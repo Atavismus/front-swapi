@@ -11,6 +11,7 @@ import {
 import { Loader } from '../Loader/Loader';
 import { Link as LinkIcon } from '@mui/icons-material';
 import { ICONS } from '../../config/constants';
+import { getPathFromUrl } from '../../helpers/url';
 import styles from './Result.module.scss';
 
 const Result = (props) => {
@@ -39,7 +40,7 @@ const Result = (props) => {
     return (
       <Tooltip title={url}>
         <Link to={url} target="_blank">
-          <IconButton aria-label="settings">
+          <IconButton>
             <LinkIcon />
           </IconButton>
         </Link>
@@ -48,10 +49,10 @@ const Result = (props) => {
   };
 
   const renderUrl = (url) => {
-    url = url.replace('https://swapi.dev/api', '');
+    url = getPathFromUrl(url);
     return (
       <li key={url}>
-        <Link to={url}>{url.slice(1).slice(0, -1)}</Link>
+        <Link to={url}>{url.slice(0, -1)}</Link>
       </li>
     );
   };

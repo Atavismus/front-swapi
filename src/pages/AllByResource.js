@@ -4,6 +4,7 @@ import { MainLayout } from '../layouts/MainLayout';
 import { ResultsList } from '../components/ResultsList/ResultsList';
 import { Result } from '../components/Result/Result';
 import { Loader } from '../components/Loader/Loader';
+import { getIdFromUrl } from '../helpers/url';
 import { classes } from '../classes/classes';
 
 const AllByResource = (props) => {
@@ -31,7 +32,9 @@ const AllByResource = (props) => {
   const handleResult = (event) => {
     const id = parseInt(event.target.value);
     setCurrentResult(id);
-    const obj = new classes[resource](data[id]);
+    // Get the right object from data where url id = id
+    const found = data.find(({ url }) => getIdFromUrl(url) === id);
+    const obj = new classes[resource](found);
     setDataOneSheet(obj);
   };
 
