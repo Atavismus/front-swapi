@@ -15,11 +15,11 @@ export class Vehicle {
     this.pilots = object.pilots;
   }
   getTitleFields() {
-    return [this.name, this.model, this.vehicle_class];
+    return [this.name, this.vehicle_class, this.manufacturer];
   }
   getSheetFields() {
     return {
-      manufacturer: 'Manufacturer',
+      model: 'Model',
       cost_in_credits: 'Cost in credits',
       length: 'Length',
       crew: 'Crew',
