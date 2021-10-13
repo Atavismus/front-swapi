@@ -4,6 +4,7 @@ import { routes } from '../../config/routes';
 import Container from '@mui/material/Container';
 import styles from './FastLinks.module.scss';
 import { ICONS } from '../../config/constants';
+import SearchIcon from '@mui/icons-material/Search';
 
 const FastLinks = () => {
   return (
@@ -12,12 +13,15 @@ const FastLinks = () => {
         .filter(
           (element) => !element.path.includes(':id') && element.path !== '/'
         )
-        .map((route, i) => (
-          <Link to={route.path} key={i}>
-            {ICONS[route.path.slice(1)]}
-            {route.path.slice(1).toUpperCase()}
-          </Link>
-        ))}
+        .map((route, i) => {
+          const path = route.path;
+          return (
+            <Link to={path} key={i}>
+              {path === '/search' ? <SearchIcon /> : ICONS[path.slice(1)]}
+              {path.slice(1).toUpperCase()}
+            </Link>
+          );
+        })}
     </Container>
   );
 };
