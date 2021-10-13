@@ -15,16 +15,16 @@ export class People {
     this.vehicles = object.vehicles;
   }
   getTitleFields() {
-    return [this.name, this.homeworld, this.birth_year];
+    return [this.name, this.gender, this.birth_year];
   }
   getSheetFields() {
     return {
-      gender: 'Gender',
       skin_color: 'Skin color',
       hair_color: 'Hair color',
       eye_color: 'Eye color',
       height: 'Height',
       mass: 'Mass',
+      homeworld: 'Homeworld',
       films: 'Films',
       species: 'Species',
       starships: 'Starships',
