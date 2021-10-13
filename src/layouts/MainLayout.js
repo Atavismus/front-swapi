@@ -9,7 +9,9 @@ function MainLayout(props) {
     <>
       <Topbar />
       <FastLinks />
-      <Container maxWidth={false}>{props.children}</Container>
+      <Container maxWidth={false} className="content">
+        {props.children}
+      </Container>
       <Footer />
     </>
   );
