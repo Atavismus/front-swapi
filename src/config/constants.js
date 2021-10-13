@@ -18,6 +18,8 @@ export const ICONS = {
 
 export const API_URL = 'http://localhost:8080/api/';
 
+export const SWAPI_URL = 'https://swapi.dev/api/';
+
 export const RESOURCES = [
   'films',
   'people',
