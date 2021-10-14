@@ -8,26 +8,33 @@ import { getIdFromUrl } from '../helpers/url';
 import { classes } from '../classes/classes';
 import { getData } from '../services/SearchService';
 
-const Search = () => {
+const Search = (props) => {
+  const { location } = props;
+  let page = location.search;
+  page = page.substring(page.lastIndexOf('&'));
   const [search, setSearch] = useState('');
   const [resource, setResource] = useState('');
   const [data, setData] = useState(null);
   const [currentResult, setCurrentResult] = useState(null);
   const [count, setCount] = useState(0);
   const [dataOneSheet, setDataOneSheet] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getData(resource, search);
+        const response = await getData(resource, search, page);
         setCount(response.count);
         setData(response.results);
+        setPrevPage(response.previous);
+        setNextPage(response.next);
       } catch (error) {
         console.error(error);
       }
     };
     search !== '' && resource && fetchData();
-  }, [search, resource]);
+  }, [search, resource, page]);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -61,6 +68,8 @@ const Search = () => {
           data={data}
           resource={resource}
           count={count}
+          prevPage={prevPage}
+          nextPage={nextPage}
           currentResult={currentResult}
           onResultClick={handleResult}
         />

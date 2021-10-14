@@ -8,26 +8,29 @@ import { getIdFromUrl } from '../helpers/url';
 import { classes } from '../classes/classes';
 
 const AllByResource = (props) => {
-  const { match } = props;
+  const { match, location } = props;
+  const page = location.search;
   const resource = match.path.slice(1);
   const [data, setData] = useState(null);
   const [count, setCount] = useState(0);
   const [currentResult, setCurrentResult] = useState(null);
   const [dataOneSheet, setDataOneSheet] = useState(null);
-  // const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getData(resource);
+        const response = await getData(resource, page);
         setCount(response.count);
         setData(response.results);
-        //setNextPage(response.next);
+        setPrevPage(response.previous);
+        setNextPage(response.next);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [resource]);
+  }, [resource, page]);
 
   const handleResult = (event) => {
     const id = parseInt(event.target.value);
@@ -45,6 +48,8 @@ const AllByResource = (props) => {
           data={data}
           resource={resource}
           count={count}
+          prevPage={prevPage}
+          nextPage={nextPage}
           currentResult={currentResult}
           onResultClick={handleResult}
         />

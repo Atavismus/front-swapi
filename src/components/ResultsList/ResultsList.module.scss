@@ -20,3 +20,13 @@
     }
   }
 }
+
+.pagination svg {
+  color: var(--yellow);
+  width: 2em;
+  height: 2em;
+}
+
+.disabled svg {
+  opacity: 0.3;
+}
