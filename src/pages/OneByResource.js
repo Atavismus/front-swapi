@@ -9,11 +9,11 @@ const OneByResource = (props) => {
   const resource = match.path.replace('/:id', '').slice(1);
   const id = match.params.id;
   const [data, setData] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const obj = await getData(resource, id);
+        console.log(obj);
         setData(obj);
       } catch (error) {
         console.error(error);

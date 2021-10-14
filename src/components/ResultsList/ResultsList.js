@@ -25,8 +25,6 @@ const ResultsList = (props) => {
     onResultClick,
   } = props;
   const renderPagination = (direction) => {
-    console.log('prevPage', prevPage);
-    console.log('nextPage', nextPage);
     const disabled =
       (direction === 0 && prevPage === null) ||
       (direction === 1 && nextPage === null);
