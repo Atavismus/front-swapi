@@ -15,3 +15,26 @@
     color: var(--dark);
   }
 }
+
+@media only screen and (max-width: 700px) {
+  :root .appBar {
+    h1 {
+      font-size: large;
+      padding: 0 5px;
+    }
+    .logo {
+      height: 40px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  :root .appBar {
+    h1 {
+      font-size: medium;
+    }
+    .logo {
+      height: 30px;
+    }
+  }
+}

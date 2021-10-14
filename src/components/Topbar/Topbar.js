@@ -23,7 +23,9 @@ const Topbar = () => {
               className={styles.logo}
             />
           </Link>
-          <Typography variant="h1">The Star Wars API viewer</Typography>
+          <Typography variant="h1" align="center">
+            The Star Wars API viewer
+          </Typography>
           <Tooltip title="Paid feature">
             <FormControlLabel
               control={<Switch color="primary" />}
