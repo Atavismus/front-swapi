@@ -52,7 +52,9 @@ const Result = (props) => {
     url = getPathFromUrl(url);
     return (
       <li key={url}>
-        <Link to={url}>{url.slice(0, -1)}</Link>
+        <Link to={url} target="_blank">
+          {url.slice(0, -1)}
+        </Link>
       </li>
     );
   };
@@ -63,7 +65,16 @@ const Result = (props) => {
       displayField = field.map((element) => renderUrl(element));
       displayField = <ul>{displayField}</ul>;
     } else {
-      displayField = <em>{field}</em>;
+      if (label === 'Homeworld' && field) {
+        const path = getPathFromUrl(field);
+        displayField = (
+          <Link to={path} target="_blank" className={styles.notInAli}>
+            {path.slice(0, -1)}
+          </Link>
+        );
+      } else {
+        displayField = <em>{field}</em>;
+      }
     }
     if (field && field.length > 0) {
       return (
