@@ -10,6 +10,7 @@ body {
   background: var(--dark);
   color: var(--light);
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Works on Firefox */

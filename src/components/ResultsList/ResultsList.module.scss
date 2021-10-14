@@ -9,7 +9,7 @@
     height: 40px;
     border-color: var(--yellow);
     border-radius: 20px;
-    font-size: small;
+    font-size: 14px;
     color: var(--yellow);
     margin: 10px 5px 0 5px;
     &.on,
@@ -25,6 +25,7 @@
   color: var(--yellow);
   width: 2em;
   height: 2em;
+  padding: 10px;
 }
 
 .disabled svg {
