@@ -8,3 +8,11 @@ export const getIdFromUrl = (url) => {
 export const getPathFromUrl = (url) => {
   return url.replace(SWAPI_URL, '');
 };
+
+export const getPageFromUrl = (resource, url) => {
+  try {
+    return url.replace(SWAPI_URL, '').replace(`${resource}/`, '');
+  } catch (error) {
+    console.log(error);
+  }
+};
