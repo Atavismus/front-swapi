@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Container,
   FormControl,
-  Grid,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -16,7 +15,6 @@ import { RESOURCES } from '../../config/constants';
 const Search = (props) => {
   const { search, resource = RESOURCES[0], setSearch, setResource } = props;
   return (
-    // <Grid container spacing={5} className={styles.search}>
     <Container maxWidth="md" className={`${styles.search} flex spaceBetween`}>
       <div className={styles.column}>
         <TextField
