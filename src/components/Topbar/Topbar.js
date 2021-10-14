@@ -6,6 +6,7 @@ import {
   FormControlLabel,
   Switch,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 import styles from './Topbar.module.scss';
@@ -23,11 +24,14 @@ const Topbar = () => {
             />
           </Link>
           <Typography variant="h1">The Star Wars API viewer</Typography>
-          <FormControlLabel
-            control={<Switch color="primary" />}
-            label="Wookie"
-            className={styles.switch}
-          />
+          <Tooltip title="Paid feature">
+            <FormControlLabel
+              control={<Switch color="primary" />}
+              label="Wookie"
+              className={styles.switch}
+              disabled
+            />
+          </Tooltip>
         </Container>
       </Toolbar>
     </AppBar>
