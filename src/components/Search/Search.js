@@ -29,11 +29,12 @@ const Search = (props) => {
               </InputAdornment>
             ),
           }}
+          className={styles.input}
           fullWidth
         />
       </div>
       <div className={styles.column}>
-        <FormControl fullWidth>
+        <FormControl fullWidth className={styles.input}>
           <InputLabel id="searchResourceLbl">Resource</InputLabel>
           <Select
             variant="standard"

@@ -67,3 +67,17 @@ a:hover {
 .alignCenter {
   align-items: center;
 }
+
+.MuiMenu-paper.MuiPopover-paper {
+  background: var(--dark);
+  color: var(--yellow);
+  border: solid 1px var(--yellow);
+  border-radius: none;
+}
+
+.MuiMenu-paper.MuiPopover-paper li:hover {
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
