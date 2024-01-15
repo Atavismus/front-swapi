@@ -18,7 +18,7 @@ const Topbar = () => {
         <Container className="flex alignCenter spaceBetween">
           <Link to="/">
             <img
-              src={`${process.env.PUBLIC_URL}/fastswapi.png`}
+              src="/fastswapi.png"
               alt="Fastswapi"
               className={styles.logo}
             />
