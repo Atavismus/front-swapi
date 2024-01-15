@@ -7,7 +7,7 @@ import {
   MenuItem,
   Select,
   TextField,
-} from '@material-ui/core';
+} from '@mui/material';
 import styles from './Search.module.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import { RESOURCES } from '../../config/constants';

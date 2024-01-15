@@ -8,7 +8,7 @@ import {
   Toolbar,
   Tooltip,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import styles from './Topbar.module.scss';
 
 const Topbar = () => {

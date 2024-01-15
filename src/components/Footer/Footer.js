@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import { AppBar, Container, Toolbar } from '@material-ui/core';
+import { AppBar, Container, Toolbar } from '@mui/material';
 
 const Footer = () => {
   return (
