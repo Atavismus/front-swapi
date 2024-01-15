@@ -7,12 +7,13 @@ import Container from '@mui/material/Container';
 function MainLayout(props) {
   return (
     <>
-      <Topbar />
+    test
+      {/* <Topbar />
       <FastLinks />
       <Container maxWidth={false} className="content">
         {props.children}
       </Container>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
