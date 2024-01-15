@@ -1,20 +1,12 @@
-import React from 'react';
-import styles from './Footer.module.scss';
-import { AppBar, Container, Toolbar } from '@mui/material';
+import { Footer as FooterDSFR } from "@codegouvfr/react-dsfr/Footer";
 
 const Footer = () => {
   return (
-    <AppBar position="fixed" className={styles.footer}>
-      <Toolbar>
-        <Container className="center">
-          <em>
-            <span className={styles.copyleft}>&copy;</span> Copyleft 2021 ⚡
-            Fasthomas - If you want real SF with depth, try DUNE instead
-          </em>
-          <span className={styles.emoji}> 😉</span>
-        </Container>
-      </Toolbar>
-    </AppBar>
+    <FooterDSFR
+      contentDescription="Viewer de SWAPI, l'API Star Wars (Closed Alpha). Test non destiné au public du design système des sites de l'état français."
+      accessibility="non compliant"
+      license="Copyleft 2024 - Betathomas - DUNE > SW ; )"
+    />
   );
 };
 
