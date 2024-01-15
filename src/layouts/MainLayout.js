@@ -8,11 +8,11 @@ function MainLayout(props) {
   return (
     <>
       <Topbar />
-      {/* <FastLinks />
+      <FastLinks />
       <Container maxWidth={false} className="content">
         {props.children}
       </Container>
-      <Footer /> */}
+      <Footer />
     </>
   );
 }

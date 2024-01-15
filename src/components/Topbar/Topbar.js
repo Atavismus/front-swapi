@@ -16,13 +16,13 @@ const Topbar = () => {
     <AppBar position="sticky" className={styles.appBar}>
       <Toolbar>
         <Container className="flex alignCenter spaceBetween">
-          {/* <Link to="/">
+          <Link to="/">
             <img
               src={`${process.env.PUBLIC_URL}/fastswapi.png`}
               alt="Fastswapi"
               className={styles.logo}
             />
-          </Link> */}
+          </Link>
           <Typography variant="h1" align="center">
             The Star Wars API viewer
           </Typography>
