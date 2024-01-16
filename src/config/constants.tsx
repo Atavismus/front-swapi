@@ -28,3 +28,13 @@ export const RESOURCES = [
   'starships',
   'vehicles',
 ];
+
+export const RESOURCES_FR = {
+  'search': 'Rechercher',
+  'films': 'Films',
+  'people': 'Personnages',
+  'planets': 'Planètes',
+  'species': 'Espèces',
+  'starships': 'Vaisseaux',
+  'vehicles': 'Véhicules',
+};

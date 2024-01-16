@@ -2,6 +2,7 @@
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { routes } from '../../config/routes';
+import { RESOURCES_FR } from '../../config/constants';
 
 const Topbar = () => {
   const links = [];
@@ -16,7 +17,7 @@ const Topbar = () => {
           to: path,
           target: '_self'
         },
-        text: path.slice(1).toUpperCase(),
+        text: RESOURCES_FR[path.slice(1)],
         isActive: location.pathname === path
       });
     });
