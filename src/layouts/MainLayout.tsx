@@ -1,12 +1,13 @@
 import { Topbar } from '../components/Topbar/Topbar';
 import { Footer } from '../components/Footer/Footer';
 import Container from '@mui/material/Container';
+import { PropsWithChildren } from 'react';
 
-function MainLayout(props) {
+const MainLayout = (props: PropsWithChildren) => {
   return (
     <>
       <Topbar />
-      <Container maxWidth={false} className="content">
+      <Container maxWidth={false}>
         {props.children}
       </Container>
       <Footer />
