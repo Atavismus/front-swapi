@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -66,9 +65,8 @@ const ResultsList = (props) => {
               value={id}
               variant="outlined"
               onClick={onResultClick}
-              className={`${styles.result} ${
-                currentResult === id && styles.on
-              }`}
+              className={`${styles.result} ${currentResult === id && styles.on
+                }`}
             >
               {resource === 'films' ? element.title : element.name}
             </Button>

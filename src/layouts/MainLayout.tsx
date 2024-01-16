@@ -1,4 +1,3 @@
-import React from 'react';
 import { Topbar } from '../components/Topbar/Topbar';
 import { Footer } from '../components/Footer/Footer';
 import Container from '@mui/material/Container';
