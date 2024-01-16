@@ -1,11 +1,13 @@
-import { Typography } from '@mui/material';
-import styles from './Loader.module.scss';
+import { Box, CircularProgress } from '@mui/material';
 
 const Loader = () => {
   return (
-    <Typography align="center" className={styles.loader}>
-      Loading...
-    </Typography>
+    <Box display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="70vh">
+      <CircularProgress size="5rem" />
+    </Box>
   );
 };
 
