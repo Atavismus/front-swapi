@@ -4,7 +4,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Container,
   IconButton,
   Tooltip,
 } from '@mui/material';
@@ -89,9 +88,9 @@ const Result = (props) => {
   };
 
   return (
-    <Container maxWidth="md">
+    <>
       {title && fields ? (
-        <Card className={styles.card}>
+        <Card sx={{ minWidth: '300px', maxWidth: '70%' }} className={styles.card}>
           <CardHeader
             avatar={
               <Tooltip title={currentResource}>
@@ -111,7 +110,7 @@ const Result = (props) => {
       ) : (
         <Loader />
       )}
-    </Container>
+    </>
   );
 };
 

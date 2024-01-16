@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
+  Box,
   Button,
-  Container,
   IconButton,
   Typography,
   Tooltip,
@@ -52,7 +52,7 @@ const ResultsList = (props) => {
   };
 
   return (
-    <Container className="center gutter">
+    <Box>
       <Typography className={styles.title}>
         {count} result{count > 0 ? 's:' : '.'}
       </Typography>
@@ -79,7 +79,7 @@ const ResultsList = (props) => {
         {renderPagination(0)}
         {renderPagination(1)}
       </div>
-    </Container>
+    </Box>
   );
 };
 
