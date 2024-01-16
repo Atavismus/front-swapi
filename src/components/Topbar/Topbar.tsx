@@ -1,11 +1,19 @@
-// import styles from './Topbar.module.scss';
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { routes } from '../../config/routes';
 import { RESOURCES_FR } from '../../config/constants';
 
+interface Link {
+  linkProps: {
+    to: string,
+    target: string
+  },
+  text: string,
+  isActive: boolean
+}
+
 const Topbar = () => {
-  const links = [];
+  const links: Link[] = [];
   routes
     .filter(
       (element) => !element.path.includes(':id') && element.path !== '/'
