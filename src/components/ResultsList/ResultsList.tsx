@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
 import {
   Box,
-  Button,
-  IconButton,
-  Typography,
   Tooltip,
 } from '@mui/material';
+import { Badge } from "@codegouvfr/react-dsfr/Badge";
+import { Button } from "@codegouvfr/react-dsfr/Button";
+import { Tag } from "@codegouvfr/react-dsfr/Tag";
 import styles from './ResultsList.module.scss';
 import { getIdFromUrl, getPageFromUrl } from '../../helpers/url';
 import {
   ArrowBackIos as Prev,
   ArrowForwardIos as Next,
 } from '@mui/icons-material';
+
 
 const ResultsList = (props) => {
   const {
@@ -21,7 +22,7 @@ const ResultsList = (props) => {
     prevPage = null,
     nextPage = null,
     currentResult,
-    onResultClick,
+    onResultClick
   } = props;
   const renderPagination = (direction) => {
     const disabled =
@@ -29,12 +30,7 @@ const ResultsList = (props) => {
       (direction === 1 && nextPage === null);
     if (disabled) {
       return (
-        <IconButton
-          disabled
-          className={`${styles.pagination} ${styles.disabled}`}
-        >
-          {direction === 0 ? <Prev /> : <Next />}
-        </IconButton>
+        <Button disabled className={styles.pagination}>{direction === 0 ? <Prev /> : <Next />}</Button>
       );
     } else {
       const to =
@@ -42,34 +38,42 @@ const ResultsList = (props) => {
           ? getPageFromUrl(resource, prevPage)
           : getPageFromUrl(resource, nextPage);
       return (
-        <Tooltip title={direction === 0 ? 'Previous results' : 'Next results'}>
-          <Link to={to} className={styles.pagination}>
-            <IconButton>{direction === 0 ? <Prev /> : <Next />}</IconButton>
-          </Link>
-        </Tooltip>
+        <>
+          <Tooltip title={direction === 0 ? 'Previous results' : 'Next results'}>
+            <Link to={to}>
+              <Button className={styles.pagination}>{direction === 0 ? <Prev /> : <Next />}</Button>
+            </Link>
+          </Tooltip>
+        </>
+
       );
     }
   };
 
   return (
-    <Box>
-      <Typography className={styles.title}>
-        {count} result{count > 0 ? 's:' : '.'}
-      </Typography>
+    <Box sx={{ textAlign: 'center' }}>
+      <div>
+        <Badge
+          noIcon
+          severity="success"
+        >
+          {count} résultat{count > 0 ? 's' : ''}
+        </Badge>
+      </div>
       {data ? (
         data.map((element) => {
           const id = getIdFromUrl(element.url);
           return (
-            <Button
+            <Tag
               key={id}
-              value={id}
-              variant="outlined"
-              onClick={onResultClick}
-              className={`${styles.result} ${currentResult === id && styles.on
-                }`}
+              nativeButtonProps={{
+                value: id,
+                onClick: onResultClick
+              }}
+              className={`${styles.result} ${currentResult === id && styles.on}`}
             >
               {resource === 'films' ? element.title : element.name}
-            </Button>
+            </Tag>
           );
         })
       ) : (
