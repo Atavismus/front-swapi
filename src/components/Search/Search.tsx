@@ -11,7 +11,14 @@ import styles from './Search.module.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import { RESOURCES } from '../../config/constants';
 
-const Search = (props) => {
+interface ISearchComponent {
+  search: string;
+  resource: string;
+  setSearch: Function;
+  setResource: Function;
+}
+
+const Search = (props: ISearchComponent) => {
   const { search, resource = RESOURCES[0], setSearch, setResource } = props;
   return (
     <Container maxWidth="md" className={`${styles.search} flex spaceBetween`}>

@@ -7,28 +7,35 @@ import { Loader } from '../components/Loader/Loader';
 import { getIdFromUrl } from '../helpers/url';
 import { classes } from '../classes/classes';
 import { getData } from '../services/SearchService';
+import { Resource, ResourceButFilm, Response } from '../types';
 
-const Search = (props) => {
+interface ISearch {
+  location: {
+    search: string
+  }
+}
+
+const Search = (props: ISearch) => {
   const { location } = props;
   let page = location.search;
   page = page.substring(page.lastIndexOf('&'));
-  const [search, setSearch] = useState('');
-  const [resource, setResource] = useState('');
-  const [data, setData] = useState(null);
-  const [currentResult, setCurrentResult] = useState(null);
-  const [count, setCount] = useState(0);
-  const [dataOneSheet, setDataOneSheet] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [nextPage, setNextPage] = useState(null);
+  const [search, setSearch] = useState<string>('');
+  const [resource, setResource] = useState<string>('');
+  const [data, setData] = useState<Resource[]>();
+  const [count, setCount] = useState<number>(0);
+  const [currentResult, setCurrentResult] = useState<number>(1);
+  const [dataOneSheet, setDataOneSheet] = useState<Resource>();
+  const [prevPage, setPrevPage] = useState<string>('');
+  const [nextPage, setNextPage] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getData(resource, search, page);
-        setCount(response.count);
-        setData(response.results);
-        setPrevPage(response.previous);
-        setNextPage(response.next);
+        setCount((response as Response).count);
+        setData((response as Response).results);
+        setPrevPage((response as Response).previous);
+        setNextPage((response as Response).next);
       } catch (error) {
         console.error(error);
       }
@@ -36,23 +43,27 @@ const Search = (props) => {
     search !== '' && resource && fetchData();
   }, [search, resource, page]);
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
+  const handleSearch = (event: MouseEvent) => {
+    const search: string = (event?.target as HTMLButtonElement).value;
+    setSearch(search);
     setDataOneSheet(null);
   };
 
-  const handleResource = (event) => {
-    setResource(event.target.value);
+  const handleResource = (event: MouseEvent) => {
+    const resource: string = (event?.target as HTMLButtonElement).value;
+    setResource(resource);
     setDataOneSheet(null);
   };
 
-  const handleResult = (event) => {
-    const id = parseInt(event.target.value);
+  const handleResult = (event: MouseEvent) => {
+    const id: number = parseInt((event?.target as HTMLButtonElement).value);
     setCurrentResult(id);
     // Get the right object from data where url id = id
-    const found = data.find(({ url }) => getIdFromUrl(url) === id);
-    const obj = new classes[resource](found);
-    setDataOneSheet(obj);
+    if (data) {
+      const found = data.find(({ url }) => getIdFromUrl(url) === id);
+      const obj: Resource | ResourceButFilm = new classes[resource](found);
+      setDataOneSheet(obj);
+    }
   };
 
   return (

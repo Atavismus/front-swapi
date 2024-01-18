@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Card,
@@ -12,18 +12,26 @@ import { Link as LinkIcon } from '@mui/icons-material';
 import { ICONS } from '../../config/constants';
 import { getPathFromUrl } from '../../helpers/url';
 import styles from './Result.module.scss';
+import { Resource } from '../../types';
+import { IFilm } from '../../classes/Film';
 
-const Result = (props) => {
+interface ResultProps {
+  data: Resource,
+  currentResource: string,
+  currentResult: number,
+}
+
+const Result = (props: ResultProps) => {
   const { data, currentResource, currentResult } = props;
-  const [title, setTitle] = useState(null);
-  const [fields, setFields] = useState(null);
+  const [title, setTitle] = useState<string>('');
+  const [fields, setFields] = useState<{ [key: string]: string }>();
 
   useEffect(() => {
-    data && setTitle(data.getTitleFields());
+    data && setTitle((data as unknown as IFilm).getTitleFields());
   }, [data]);
 
   useEffect(() => {
-    data && setFields(data.getSheetFields());
+    data && setFields((data as unknown as IFilm).getSheetFields());
   }, [data]);
 
   const renderTitle = () => {
@@ -47,7 +55,7 @@ const Result = (props) => {
     );
   };
 
-  const renderUrl = (url) => {
+  const renderUrl = (url: string) => {
     url = getPathFromUrl(url);
     return (
       <li key={url}>
@@ -58,7 +66,7 @@ const Result = (props) => {
     );
   };
 
-  const renderField = (key, label, field) => {
+  const renderField = (key: string, label: string, field: string) => {
     let displayField;
     if (Array.isArray(field)) {
       displayField = field.map((element) => renderUrl(element));
@@ -94,7 +102,7 @@ const Result = (props) => {
           <CardHeader
             avatar={
               <Tooltip title={currentResource}>
-                {ICONS[currentResource]}
+                {(ICONS[currentResource] as ReactElement)}
               </Tooltip>
             }
             title={renderTitle()}
@@ -102,7 +110,7 @@ const Result = (props) => {
             className={styles.cardHeader}
           ></CardHeader>
           <CardContent>
-            {Object.keys(fields).map((key) =>
+            {Object.keys(fields).map((key: string) =>
               renderField(key, fields[key], data[key])
             )}
           </CardContent>

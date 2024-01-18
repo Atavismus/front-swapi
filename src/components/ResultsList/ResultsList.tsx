@@ -12,9 +12,20 @@ import {
   ArrowBackIos as Prev,
   ArrowForwardIos as Next,
 } from '@mui/icons-material';
+import { Resource, ResourceButFilm } from '../../types';
+import { IFilm } from '../../classes/Film';
 
+interface ResultsListProps {
+  data: Resource[],
+  resource: string,
+  count: number,
+  prevPage: string,
+  nextPage: string | null,
+  currentResult: number,
+  onResultClick: Function,
+}
 
-const ResultsList = (props) => {
+const ResultsList = (props: ResultsListProps) => {
   const {
     data,
     resource,
@@ -24,13 +35,13 @@ const ResultsList = (props) => {
     currentResult,
     onResultClick
   } = props;
-  const renderPagination = (direction) => {
+  const renderPagination = (direction: number) => {
     const disabled =
-      (direction === 0 && prevPage === null) ||
-      (direction === 1 && nextPage === null);
+      (direction == 0 && prevPage === null) ||
+      (direction == 1 && nextPage === null);
     if (disabled) {
       return (
-        <Button disabled className={styles.pagination}>{direction === 0 ? <Prev /> : <Next />}</Button>
+        <Button disabled className={styles.pagination}>{direction == 0 ? <Prev /> : <Next />}</Button>
       );
     } else {
       const to =
@@ -61,7 +72,7 @@ const ResultsList = (props) => {
         </Badge>
       </div>
       {data ? (
-        data.map((element) => {
+        data.map((element: Resource) => {
           const id = getIdFromUrl(element.url);
           return (
             <Tag
@@ -72,7 +83,7 @@ const ResultsList = (props) => {
               }}
               className={`${styles.result} ${currentResult === id && styles.on}`}
             >
-              {resource === 'films' ? element.title : element.name}
+              {resource === 'films' ? (element as IFilm).title : (element as ResourceButFilm).name}
             </Tag>
           );
         })

@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { API_URL } from '../config/constants';
 
-export const getData = async (resource, page) => {
+export const getData = async (resource: string, page: string) => {
   try {
-    const response = await axios.get(
+    const response: AxiosResponse<unknown, any> = await axios.get(
       `${API_URL}get?resource=${resource}${page.replace('?', '&')}`
     );
     return response.data;

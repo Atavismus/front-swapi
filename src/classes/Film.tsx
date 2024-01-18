@@ -1,5 +1,34 @@
-export class Film {
-  constructor(object = {}) {
+export interface IFilm {
+  title: string;
+  episode_id: number;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  species: string[];
+  starships: string[];
+  vehicles: string[];
+  characters: string[];
+  planets: string[];
+  url: string;
+  getTitleFields: Function;
+  getSheetFields: Function;
+}
+
+export class Film implements IFilm {
+  title;
+  episode_id;
+  opening_crawl;
+  director;
+  producer;
+  release_date;
+  species;
+  starships;
+  vehicles;
+  characters;
+  planets;
+  url;
+  constructor(object: IFilm) {
     this.title = object.title;
     this.episode_id = object.episode_id;
     this.opening_crawl = object.opening_crawl;
@@ -13,10 +42,10 @@ export class Film {
     this.planets = object.planets;
     this.url = object.url;
   }
-  getTitleFields() {
-    return [this.episode_id, this.title, this.release_date];
+  getTitleFields(): string[] {
+    return [this.episode_id.toString(), this.title, this.release_date];
   }
-  getSheetFields() {
+  getSheetFields(): { [key: string]: string } {
     return {
       director: 'Director',
       producer: 'Producer',

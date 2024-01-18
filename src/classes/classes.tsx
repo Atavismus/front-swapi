@@ -4,8 +4,9 @@ import { Planet } from './Planet';
 import { Specie } from './Specie';
 import { Starship } from './Starship';
 import { Vehicle } from './Vehicle';
+import { AnyResource } from '../types'
 
-export const classes = {
+export const classes: { [key: string]: AnyResource } = {
   films: Film,
   people: People,
   planets: Planet,

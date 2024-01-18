@@ -1,5 +1,37 @@
-export class Vehicle {
-  constructor(object = {}) {
+export interface IVehicle {
+  name: string;
+  model: string;
+  vehicle_class: string;
+  manufacturer: string;
+  length: string;
+  cost_in_credits: string;
+  crew: string;
+  passengers: string;
+  max_atmosphering_speed: string;
+  cargo_capacity: string;
+  consumables: string;
+  films: string[];
+  pilots: string;
+  url: string;
+  getTitleFields: Function;
+  getSheetFields: Function;
+}
+export class Vehicle implements IVehicle {
+  name;
+  model;
+  vehicle_class;
+  manufacturer;
+  length;
+  cost_in_credits;
+  crew;
+  passengers;
+  max_atmosphering_speed;
+  cargo_capacity;
+  consumables;
+  films;
+  pilots;
+  url;
+  constructor(object: IVehicle) {
     this.name = object.name;
     this.model = object.model;
     this.vehicle_class = object.vehicle_class;
@@ -15,10 +47,10 @@ export class Vehicle {
     this.pilots = object.pilots;
     this.url = object.url;
   }
-  getTitleFields() {
+  getTitleFields(): string[] {
     return [this.name, this.vehicle_class, this.manufacturer];
   }
-  getSheetFields() {
+  getSheetFields(): { [key: string]: string } {
     return {
       model: 'Model',
       cost_in_credits: 'Cost in credits',

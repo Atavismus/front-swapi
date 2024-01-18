@@ -1,5 +1,34 @@
-export class Planet {
-  constructor(object = {}) {
+export interface IPlanet {
+  name: string;
+  diameter: string;
+  rotation_period: string;
+  orbital_period: string;
+  gravity: string;
+  population: string;
+  climate: string;
+  terrain: string;
+  surface_water: string;
+  residents: string[];
+  films: string[];
+  url: string;
+  getTitleFields: Function;
+  getSheetFields: Function;
+}
+
+export class Planet implements IPlanet {
+  name;
+  diameter;
+  rotation_period;
+  orbital_period;
+  gravity;
+  population;
+  climate;
+  terrain;
+  surface_water;
+  residents;
+  films;
+  url;
+  constructor(object: IPlanet) {
     this.name = object.name;
     this.diameter = object.diameter;
     this.rotation_period = object.rotation_period;
@@ -13,10 +42,10 @@ export class Planet {
     this.films = object.films;
     this.url = object.url;
   }
-  getTitleFields() {
+  getTitleFields(): string[] {
     return [this.name, this.climate, this.terrain];
   }
-  getSheetFields() {
+  getSheetFields(): { [key: string]: string } {
     return {
       diameter: 'Diameter',
       gravity: 'Gravity',

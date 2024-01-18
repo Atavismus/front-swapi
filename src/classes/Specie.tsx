@@ -1,5 +1,36 @@
-export class Specie {
-  constructor(object = {}) {
+export interface ISpecie {
+  name: string;
+  classification: string;
+  designation: string;
+  average_height: string;
+  average_lifespan: string;
+  eye_colors: string;
+  hair_colors: string;
+  skin_colors: string;
+  language: string
+  homeworld: string;
+  people: string[];
+  films: string[];
+  url: string;
+  getTitleFields: Function;
+  getSheetFields: Function;
+}
+
+export class Specie implements ISpecie {
+  name;
+  classification;
+  designation;
+  average_height;
+  average_lifespan;
+  eye_colors;
+  hair_colors;
+  skin_colors;
+  language
+  homeworld;
+  people;
+  films;
+  url;
+  constructor(object: ISpecie) {
     this.name = object.name;
     this.classification = object.classification;
     this.designation = object.designation;
@@ -14,10 +45,10 @@ export class Specie {
     this.films = object.films;
     this.url = object.url;
   }
-  getTitleFields() {
+  getTitleFields(): string[] {
     return [this.name, this.classification, this.designation];
   }
-  getSheetFields() {
+  getSheetFields(): { [key: string]: string } {
     return {
       skin_colors: 'Skin colors',
       hair_colors: 'Hair colors',
