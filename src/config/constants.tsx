@@ -38,3 +38,5 @@ export const RESOURCES_FR: { [key: string]: string } = {
   starships: 'Vaisseaux',
   vehicles: 'Véhicules',
 };
+
+export const RESULTS_PER_PAGE = 10;

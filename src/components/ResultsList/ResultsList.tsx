@@ -6,17 +6,20 @@ import {
 import { Badge } from "@codegouvfr/react-dsfr/Badge";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Tag } from "@codegouvfr/react-dsfr/Tag";
+import { Loader } from '../Loader/Loader';
 import styles from './ResultsList.module.scss';
-import { getIdFromUrl, getPageFromUrl } from '../../helpers/url';
+import { getIdFromUrl, getPageFromUrl, getPageNumberFromUrl } from '../../helpers/url';
 import {
   ArrowBackIos as Prev,
   ArrowForwardIos as Next,
 } from '@mui/icons-material';
 import { Resource, ResourceButFilm } from '../../types';
 import { IFilm } from '../../classes/Film';
+import { RESULTS_PER_PAGE } from '../../config/constants';
 
 interface ResultsListProps {
   data: Resource[],
+  fetching: boolean,
   resource: string,
   count: number,
   prevPage: string,
@@ -28,6 +31,7 @@ interface ResultsListProps {
 const ResultsList = (props: ResultsListProps) => {
   const {
     data,
+    fetching,
     resource,
     count,
     prevPage = null,
@@ -60,6 +64,12 @@ const ResultsList = (props: ResultsListProps) => {
       );
     }
   };
+  const renderPageInfo = () => {
+    const currentPage = getPageNumberFromUrl();
+    return (
+      <>{currentPage ? currentPage : 1} / {Math.ceil(count / RESULTS_PER_PAGE)}</>
+    );
+  }
 
   return (
     <Box sx={{ textAlign: 'center' }}>
@@ -92,6 +102,11 @@ const ResultsList = (props: ResultsListProps) => {
       )}
       <div>
         {renderPagination(0)}
+        {
+          fetching
+            ? <>Chargement</>
+            : <>{renderPageInfo()}</>
+        }
         {renderPagination(1)}
       </div>
     </Box>

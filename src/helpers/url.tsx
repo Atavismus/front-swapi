@@ -11,7 +11,16 @@ export const getPathFromUrl = (url) => {
 
 export const getPageFromUrl = (resource, url) => {
   try {
+    console.log(url.replace(SWAPI_URL, '').replace(`${resource}/`, ''));
     return url.replace(SWAPI_URL, '').replace(`${resource}/`, '');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPageNumberFromUrl = () => {
+  try {
+    return new URLSearchParams(window.location.search).get('page');
   } catch (error) {
     console.log(error);
   }

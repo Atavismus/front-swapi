@@ -27,7 +27,10 @@ const AllByResource = (props: AllByResourceProps) => {
   const [dataOneSheet, setDataOneSheet] = useState<Resource>();
   const [prevPage, setPrevPage] = useState<string>('');
   const [nextPage, setNextPage] = useState<string>('');
+  const [fetching, setFetching] = useState<boolean>(false);
   useEffect(() => {
+    console.log("page", page)
+    setFetching(true);
     const fetchData = async () => {
       try {
         const response = await getData(resource, page);
@@ -35,6 +38,7 @@ const AllByResource = (props: AllByResourceProps) => {
         setData((response as Response).results);
         setPrevPage((response as Response).previous);
         setNextPage((response as Response).next);
+        setFetching(false);
       } catch (error) {
         console.error(error);
       }
@@ -58,6 +62,7 @@ const AllByResource = (props: AllByResourceProps) => {
       {data ? (
         <ResultsList
           data={data}
+          fetching={fetching}
           resource={resource}
           count={count}
           prevPage={prevPage}
