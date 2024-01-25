@@ -11,7 +11,7 @@
     // border-radius: 20px;
     // font-size: 14px;
     // color: var(--yellow);
-    margin: 10px 5px 0 5px;
+    margin: 25px 5px 0 5px;
 
     // &.on {
     //   background-color: var(--hover-tint);
@@ -26,10 +26,6 @@
   background: none;
 }
 
-.pagination {
-  margin: 10px 5px 0 5px;
-}
-
 .pagination svg {
   // color: var(--yellow);
   // width: 2em;
@@ -41,4 +37,15 @@
 
 .disabled svg {
   opacity: 0.3;
+}
+
+.paginationContent {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageInfo {
+  width: 50px;
 }

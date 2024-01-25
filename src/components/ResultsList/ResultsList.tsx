@@ -67,8 +67,14 @@ const ResultsList = (props: ResultsListProps) => {
   const renderPageInfo = () => {
     const currentPage = getPageNumberFromUrl();
     return (
-      <>{currentPage ? currentPage : 1} / {Math.ceil(count / RESULTS_PER_PAGE)}</>
-    );
+      <div className={styles.pageInfo}>
+        {
+          fetching
+            ? <Loader pagination />
+            : <>{currentPage ? currentPage : 1} / {Math.ceil(count / RESULTS_PER_PAGE)}</>
+        }
+      </div>
+    )
   }
 
   return (
@@ -100,16 +106,12 @@ const ResultsList = (props: ResultsListProps) => {
       ) : (
         <p>No data</p>
       )}
-      <div>
+      <div className={styles.paginationContent}>
         {renderPagination(0)}
-        {
-          fetching
-            ? <>Chargement</>
-            : <>{renderPageInfo()}</>
-        }
+        {renderPageInfo()}
         {renderPagination(1)}
       </div>
-    </Box>
+    </Box >
   );
 };
 

@@ -11,7 +11,6 @@ export const getPathFromUrl = (url) => {
 
 export const getPageFromUrl = (resource, url) => {
   try {
-    console.log(url.replace(SWAPI_URL, '').replace(`${resource}/`, ''));
     return url.replace(SWAPI_URL, '').replace(`${resource}/`, '');
   } catch (error) {
     console.log(error);
