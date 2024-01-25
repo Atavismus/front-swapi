@@ -1,8 +1,8 @@
 :root {
-  .title {
-    color: var(--yellow);
-    font-size: x-large;
-  }
+  // .title {
+  //   color: var(--yellow);
+  //   font-size: x-large;
+  // }
 
   .result {
     // width: auto;
@@ -13,13 +13,17 @@
     // color: var(--yellow);
     margin: 10px 5px 0 5px;
 
-    &.on {
-      background-color: var(--hover-tint);
-      // background: var(--yellow);
-      // border-color: var(--yellow);
-      // color: var(--dark);
-    }
+    // &.on {
+    //   background-color: var(--hover-tint);
+    //   background: var(--yellow);
+    //   border-color: var(--yellow);
+    //   color: var(--dark);
+    // }
   }
+}
+
+.lien {
+  background: none;
 }
 
 .pagination {

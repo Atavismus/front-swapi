@@ -4,11 +4,11 @@ import {
   Card,
   CardHeader,
   CardContent,
-  IconButton,
+  // IconButton,
   Tooltip,
 } from '@mui/material';
 import { Loader } from '../Loader/Loader';
-import { Link as LinkIcon } from '@mui/icons-material';
+// import { Link as LinkIcon } from '@mui/icons-material';
 import { ICONS } from '../../config/constants';
 import { getPathFromUrl } from '../../helpers/url';
 import styles from './Result.module.scss';
@@ -47,9 +47,9 @@ const Result = (props: ResultProps) => {
     return (
       <Tooltip title={url}>
         <Link to={url} target="_blank">
-          <IconButton>
+          {/* <IconButton>
             <LinkIcon />
-          </IconButton>
+          </IconButton> */}
         </Link>
       </Tooltip>
     );

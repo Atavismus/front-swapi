@@ -51,7 +51,7 @@ const ResultsList = (props: ResultsListProps) => {
       return (
         <>
           <Tooltip title={direction === 0 ? 'Previous results' : 'Next results'}>
-            <Link to={to}>
+            <Link to={to} className={styles.lien}>
               <Button className={styles.pagination}>{direction === 0 ? <Prev /> : <Next />}</Button>
             </Link>
           </Tooltip>

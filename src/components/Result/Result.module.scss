@@ -4,8 +4,21 @@
     margin-top: 30px;
     color: var(--dark);
   }
+
   .cardHeader {
-    background: var(--yellow);
+    color: var(--text-action-high-blue-france);
+    background: var(--background-action-low-blue-france);
+
+    a {
+      background: none;
+
+      &[target="_blank"]::after {
+        mask-size: cover;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
     span {
       font-size: large;
     }
@@ -14,12 +27,14 @@
 
 .field {
   margin-bottom: 10px;
+
   ul {
     display: inline-block;
     padding: 0;
     margin: 0;
     margin-left: 6px;
   }
+
   li {
     display: inline-block;
     list-style: none;
@@ -28,13 +43,16 @@
     padding-right: 12px;
     border-right: dotted 2px #aaaaaa;
   }
+
   li:last-of-type {
     border: 0;
   }
+
   a {
-    color: var(--blue);
+    color: var(--blue-france-main-525);
     font-style: italic;
   }
+
   .notInAli {
     margin-left: 6px;
   }
