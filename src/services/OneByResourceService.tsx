@@ -17,19 +17,19 @@ export const getData = async (resource: string, id: number, nameOnly: boolean = 
     if (nameOnly) {
       return 'name' in (data as Resource) ? (data as ResourceButFilm).name : (data as IFilm).title;
     } else {
-      // return new classes[resource](data as Resource); // TODO: doesn't work
+      // return new classes[resource](data as Resource); // TODO: type issue
       switch (resource) {
-        case 'film':
+        case 'films':
           return new Film(data as IFilm);
         case 'people':
           return new People(data as IPeople);
-        case 'planet':
+        case 'planets':
           return new Planet(data as IPlanet);
-        case 'specie':
+        case 'species':
           return new Specie(data as ISpecie);
-        case 'starship':
+        case 'starships':
           return new Starship(data as IStarship);
-        case 'vehicle':
+        case 'vehicles':
           return new Vehicle(data as IVehicle);
         default:
           throw new Error(`Invalid resource: ${resource}`);
